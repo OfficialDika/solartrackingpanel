@@ -3,15 +3,11 @@
 
 	    $tanggal_awal = $_POST["tanggal_awal"];
 
-	    echo $tanggal_awal;
-
 	}
 
 	if(isset($_POST["tanggal_akhir"])){
 
 	    $tanggal_akhir = $_POST["tanggal_akhir"];
-
-	    echo $tanggal_akhir;
 
 	}
 
@@ -32,9 +28,9 @@
 					<div class="row">
 						<form action="index.php?page=weekly" method="POST">
 							<label for="tanggal_awal" class="col-sm-3">Pilih Waktu</label>
-							<input type="date" class="col-sm-3" id="tanggal_awal" name="tanggal_awal">
+							<input type="date" class="col-sm-3" id="tanggal_awal" name="tanggal_awal" value="<?php echo $tanggal_awal;?>">
 							<label for="tanggal_akhir" class="col-sm-1" style="text-align:center;"> - </label>
-							<input type="date" class="col-sm-3" id="tanggal_akhir" name="tanggal_akhir">
+							<input type="date" class="col-sm-3" id="tanggal_akhir" name="tanggal_akhir" value="<?php echo $tanggal_akhir;?>">
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
 							</div>
@@ -42,7 +38,7 @@
 					</div>
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					<!-- Temperature -->
-					<div id="chart_div" style="margin-top:30px;"></div>
+					<div id="chart_div" style="margin-top:30px;" width="100%"></div>
 					<script>
 						google.charts.load('current', {packages: ['corechart', 'line']});
 

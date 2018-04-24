@@ -22,7 +22,7 @@
 				<span class="pull-right-container"></span>
 			  </a>
             </li> 
-			<li class="treeview <?php if ($active == 'daily' || $active == 'weekly' || $active == 'monthly' || $active == 'yearly'){echo "active";}?>">
+			<li class="treeview <?php if ($active == 'today' || $active == 'weekly' || $active == 'monthly' || $active == 'yearly'){echo "active";}?>">
               <a href="#">
 				<i class="fa fa-pie-chart"></i> 
 						<span>Charts</span>
@@ -31,10 +31,10 @@
 						</span>
 				</a>
 				<ul class="treeview-menu">
-					<li class="<?php if ($active == 'daily'){echo 'active';}?>"><a href="index.php?page=daily"><i class="fa fa-circle-o"></i> Daily</a></li>
+					<li class="<?php if ($active == 'today'){echo 'active';}?>"><a href="index.php?page=today"><i class="fa fa-circle-o"></i> Today</a></li>
 					<li class="<?php if ($active == 'weekly'){echo 'active';}?>"><a href="index.php?page=weekly"><i class="fa fa-circle-o"></i> Weekly</a></li>
-					<li class="<?php if ($active == 'monthly'){echo 'active';}?>"><a href="index.php?page=monthly"><i class="fa fa-circle-o"></i> Monthly</a></li>
-					<li class="<?php if ($active == 'yearly'){echo 'active';}?>"><a href="index.php?page=yearly"><i class="fa fa-circle-o"></i> Yearly</a></li>
+					<!-- <li class="<?php if ($active == 'monthly'){echo 'active';}?>"><a href="index.php?page=monthly"><i class="fa fa-circle-o"></i> Monthly</a></li> -->
+					<!-- <li class="<?php if ($active == 'yearly'){echo 'active';}?>"><a href="index.php?page=yearly"><i class="fa fa-circle-o"></i> Yearly</a></li> -->
 				</ul>
             </li>
 			

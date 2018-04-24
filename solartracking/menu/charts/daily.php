@@ -1,68 +1,442 @@
-
-	 <div class="row">
-        <!-- left column -->	
-		<div class="col-md-12">
-          <!-- general form elements -->
-          <div class="box box-primary">
-            <div class="box-header with-border">
-              <h3 class="box-title">Quick Example</h3>
-            </div>
-            <!-- /.box-header -->
-            <!-- form start -->
-              <div class="box-body">
-                   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-					<script type="text/javascript">
-					  google.charts.load('current', {'packages':['line']});
-					  google.charts.setOnLoadCallback(drawChart);
-
-					function drawChart() {
-
-					  var data = new google.visualization.DataTable();
-					  data.addColumn('number', 'Timespan');
-					  data.addColumn('number', 'Voltage');
-					  data.addColumn('number', 'Ampere');
-					  data.addColumn('number', 'Watt');
-
-					  data.addRows([
-						[1,  37.8, 80.8, 41.8],
-						[2,  30.9, 69.5, 32.4],
-						[3,  25.4,   57, 25.7],
-						[4,  11.7, 18.8, 10.5],
-						[5,  11.9, 17.6, 10.4],
-						[6,   8.8, 13.6,  7.7],
-						[7,   7.6, 12.3,  9.6],
-						[8,  12.3, 29.2, 10.6],
-						[9,  16.9, 42.9, 14.8],
-						[10, 12.8, 30.9, 11.6],
-						[11,  5.3,  7.9,  4.7],
-						[12,  6.6,  8.4,  5.2],
-						[13,  4.8,  6.3,  3.6],
-						[14,  4.2,  6.2,  3.4]
-					  ]);
-
-					  var options = {
-						chart: {
-						  title: 'Box Office Earnings in First Two Weeks of Opening',
-						  subtitle: 'in millions of dollars (USD)'
-						},
-						width: 1000,
-						height: 500,
-						axes: {
-						  x: {
-							0: {side: 'top'}
-						  }
-						}
-					  };
-
-					  var chart = new google.charts.Line(document.getElementById('line_top_x'));
-
-					  chart.draw(data, google.charts.Line.convertOptions(options));
-					}
-				  </script>
-					<div id="line_top_x"></div>
-				  </div>
-              <!-- /.box-body -->
-				</div>
-			</div>
-          </div>
-	
+<?php
+	if(isset($_POST["tanggal_awal"])){
+
+	    $tanggal_awal = $_POST["tanggal_awal"];
+
+	}
+
+	if(isset($_POST["tanggal_akhir"])){
+
+	    $tanggal_akhir = $_POST["tanggal_akhir"];
+
+	}
+
+	?>
+<div class="col-md-12">
+	<div class="box box-default">
+		<div class="box-header with-border">
+			<h3 class="box-title">Today</h3>
+			<div class="box-tools pull-right">
+				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
+			</div>
+		</div>
+		<!-- /.box-header -->
+		<div class="box-body">
+			<div class="row">
+				<div class="col-md-12">
+
+					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+					<!-- Temperature -->
+					<div id="chart_div" style="margin-top:30px;" width="100%"></div>
+					<script>
+						google.charts.load('current', {packages: ['corechart', 'line']});
+
+						google.charts.setOnLoadCallback(drawBackgroundColor);
+
+
+
+						function drawBackgroundColor() {
+
+						var data = new google.visualization.DataTable();
+
+						data.addColumn('datetime', 'Time of Day');
+
+						data.addColumn('number', 'temperature');
+
+
+
+						data.addRows([
+
+
+
+						<?php
+							if (isset($_POST['tgl'])) {
+
+							    $tgl=$_POST['tgl'];
+
+							} else {
+
+							  $tgl=1;
+
+							}
+
+							include '../db_connect.php';
+
+							if ($tgl==NULL){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) >= '2018-03-01' and DATE(`timestamp`) <= '2018-03-04' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==2){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) = '$tgl' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==1) {
+
+
+
+							// $query = "SELECT * FROM `mobile` WHERE DATE(`timestamp`) = CURDATE()";
+
+							$query = "SELECT * FROM `mobile` WHERE DATE(timestamp) = CURDATE()";
+
+							}
+
+							$result = mysqli_query($con, $query)or die("Error: ".mysqli_error($con));
+
+							$no=0;
+
+							while($row_tarik = mysqli_fetch_array($result)){
+
+							    $no++;
+
+							    $id = $row_tarik['id'];
+
+							    $suhu = $row_tarik['suhu'];
+
+							    $timestamp  = $row_tarik['timestamp'];
+
+							      $timestamp1 = explode(" ",$timestamp);
+
+							      $date = $timestamp1[0];
+
+							      $date1 = explode("-",$date);
+
+							      $year = $date1[0];
+
+							      $month = $date1[1]-1;
+
+							      $day = $date1[2];
+
+							      $time = $timestamp1[1];
+
+							      $time1 = explode(":",$time);
+
+							      $hour = $time1[0]+7;
+
+							      $minute = $time1[1];
+
+							      $second = $time1[2];
+
+
+
+
+
+							      echo "[new Date( ".$year.", ".$month.", ".$day.", ".$hour.", ".$minute."), ".$suhu."],";
+
+
+
+							}
+
+
+
+							?>
+
+
+
+
+
+						]);
+
+
+
+						var options = {
+
+
+
+						hAxis: {
+
+						title: 'Time'
+
+						},
+
+						vAxis: {
+
+						title: 'Temperature (Celcius)'
+
+						},
+
+						backgroundColor: '#f1f8e9'
+
+						};
+
+
+
+						var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+
+						chart.draw(data, options);
+
+						}
+
+					</script>
+					<!-- Voltage  -->
+					<div id="chart_volt" style="margin-top:30px;"></div>
+					<script>
+						google.charts.load('current', {packages: ['corechart', 'line']});
+
+						google.charts.setOnLoadCallback(drawBackgroundColor);
+
+
+
+						function drawBackgroundColor() {
+
+						var data = new google.visualization.DataTable();
+
+						data.addColumn('datetime', 'Time of Day');
+
+						data.addColumn('number', 'voltage');
+
+
+
+						data.addRows([
+
+
+
+						<?php
+							if (isset($_POST['tgl'])) {
+
+							    $tgl=$_POST['tgl'];
+
+							} else {
+
+							  $tgl=1;
+
+							}
+
+							include '../db_connect.php';
+
+							if ($tgl==NULL){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) >= '2018-03-01' and DATE(`timestamp`) <= '2018-03-04' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==2){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) = '$tgl' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==1) {
+
+
+
+							// $query = "SELECT * FROM `mobile` WHERE DATE(`timestamp`) = CURDATE()";
+
+							$query = "SELECT * FROM `mobile` WHERE DATE(timestamp) = CURDATE()";
+
+							}
+
+							$result = mysqli_query($con, $query)or die("Error: ".mysqli_error($con));
+
+							$no=0;
+
+							while($row_tarik = mysqli_fetch_array($result)){
+
+							    $no++;
+
+							    $id = $row_tarik['id'];
+
+							    $volt = $row_tarik['volt'];
+
+							    $timestamp  = $row_tarik['timestamp'];
+
+							      $timestamp1 = explode(" ",$timestamp);
+
+							      $date = $timestamp1[0];
+
+							      $date1 = explode("-",$date);
+
+							      $year = $date1[0];
+
+							      $month = $date1[1]-1;
+
+							      $day = $date1[2];
+
+							      $time = $timestamp1[1];
+
+							      $time1 = explode(":",$time);
+
+							      $hour = $time1[0]+7;
+
+							      $minute = $time1[1];
+
+							      $second = $time1[2];
+
+
+
+
+
+							      echo "[new Date( ".$year.", ".$month.", ".$day.", ".$hour.", ".$minute."), ".$volt."],";
+
+
+
+							}
+
+
+
+							?>
+						]);
+
+						      var options = {
+
+						hAxis: {
+						title: 'Time'
+						},
+						vAxis: {
+						title: 'Voltage (Volt)'
+						},
+						backgroundColor: '#f1f8e9'
+						};
+						var chart = new google.visualization.LineChart(document.getElementById('chart_volt'));
+
+						chart.draw(data, options);
+
+						}
+
+					</script>
+					<!-- Ampere -->
+					<div id="chart_ampere" style="margin-top:30px;"></div>
+					<script>
+						google.charts.load('current', {packages: ['corechart', 'line']});
+
+						google.charts.setOnLoadCallback(drawBackgroundColor);
+
+
+
+						function drawBackgroundColor() {
+
+						var data = new google.visualization.DataTable();
+
+						data.addColumn('datetime', 'Time of Day');
+
+						data.addColumn('number', 'ampere');
+
+
+
+						data.addRows([
+
+
+
+						<?php
+							if (isset($_POST['tgl'])) {
+
+							    $tgl=$_POST['tgl'];
+
+							} else {
+
+							  $tgl=1;
+
+							}
+
+							include '../db_connect.php';
+
+							if ($tgl==NULL){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) >= '2018-03-01' and DATE(`timestamp`) <= '2018-03-04' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==2){
+
+							$query="SELECT * FROM `mobile` WHERE DATE(`timestamp`) = '$tgl' ORDER BY `raspberry`.`id` DESC";
+
+							}else if ($tgl==1) {
+
+
+
+							// $query = "SELECT * FROM `mobile` WHERE DATE(`timestamp`) = CURDATE()";
+
+							$query = "SELECT * FROM `mobile` WHERE DATE(timestamp) = CURDATE()";
+
+							}
+
+							$result = mysqli_query($con, $query)or die("Error: ".mysqli_error($con));
+
+							$no=0;
+
+							while($row_tarik = mysqli_fetch_array($result)){
+
+							    $no++;
+
+							    $id = $row_tarik['id'];
+
+							    $ampere = $row_tarik['ampere'];
+
+							    $timestamp  = $row_tarik['timestamp'];
+
+							      $timestamp1 = explode(" ",$timestamp);
+
+							      $date = $timestamp1[0];
+
+							      $date1 = explode("-",$date);
+
+							      $year = $date1[0];
+
+							      $month = $date1[1]-1;
+
+							      $day = $date1[2];
+
+							      $time = $timestamp1[1];
+
+							      $time1 = explode(":",$time);
+
+							      $hour = $time1[0]+7;
+
+							      $minute = $time1[1];
+
+							      $second = $time1[2];
+
+
+
+
+
+							      echo "[new Date( ".$year.", ".$month.", ".$day.", ".$hour.", ".$minute."), ".$ampere."],";
+
+
+
+							}
+
+
+
+							?>
+
+
+
+
+
+						]);
+
+
+
+						var options = {
+
+
+
+						hAxis: {
+
+						title: 'Time'
+
+						},
+
+						vAxis: {
+
+						title: 'Current (Ampere)'
+
+						},
+
+						backgroundColor: '#f1f8e9'
+
+						};
+
+
+
+						var chart = new google.visualization.LineChart(document.getElementById('chart_ampere'));
+
+						chart.draw(data, options);
+
+						}
+
+					</script>
+				</div>
+				<!-- /.col -->
+			</div>
+			<!-- /.row -->
+		</div>
+		<!-- /.box-body -->
+	</div>
+	<!-- /.box -->
+</div>
