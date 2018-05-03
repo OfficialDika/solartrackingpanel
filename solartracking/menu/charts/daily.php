@@ -18,7 +18,7 @@
 		<!-- /.box-header -->
 		<div class="box-body">
 			<div class="row">
-				<form action="index.php?page=weekly" method="POST">
+				<form action="index.php?page=daily" method="POST">
 					<label for="datetahun" class="col-sm-3">Choose a Day</label>
 					<input type="date" class="col-sm-3" id="date" name="date" value="<?php echo $date;?>">
 					<div class="col-sm-2">
