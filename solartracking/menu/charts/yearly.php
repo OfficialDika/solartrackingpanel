@@ -1,7 +1,7 @@
 <?php
-	if(isset($_POST["week"])){
+	if(isset($_POST["tahun"])){
 
-	    $week = $_POST["week"];
+	    $tahun = $_POST["tahun"];
 
 	}
 
@@ -9,7 +9,7 @@
 <div class="col-md-12">
 	<div class="box box-default">
 		<div class="box-header with-border">
-			<h3 class="box-title">Weekly Chart</h3>
+			<h3 class="box-title">Yearly Chart</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -21,8 +21,8 @@
 				<div class="col-md-12">
 					<div class="row">
 						<form action="index.php?page=weekly" method="POST">
-							<label for="week" class="col-sm-3">Choose a Week</label>
-							<input type="week" class="col-sm-3" id="week" name="week" value="<?php echo $week;?>">
+							<label for="tahun" class="col-sm-3">Choose a Year</label>
+							<input type="date" class="col-sm-3" id="tahun" name="tahun" value="<?php echo $tahun;?>">
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
 							</div>

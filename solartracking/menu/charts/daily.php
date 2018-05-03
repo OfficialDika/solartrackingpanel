@@ -1,13 +1,7 @@
 <?php
-	if(isset($_POST["tanggal_awal"])){
+	if(isset($_POST["date"])){
 
-	    $tanggal_awal = $_POST["tanggal_awal"];
-
-	}
-
-	if(isset($_POST["tanggal_akhir"])){
-
-	    $tanggal_akhir = $_POST["tanggal_akhir"];
+	    $date = $_POST["date"];
 
 	}
 
@@ -15,7 +9,7 @@
 <div class="col-md-12">
 	<div class="box box-default">
 		<div class="box-header with-border">
-			<h3 class="box-title">Today</h3>
+			<h3 class="box-title">Daily</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -24,6 +18,13 @@
 		<!-- /.box-header -->
 		<div class="box-body">
 			<div class="row">
+				<form action="index.php?page=weekly" method="POST">
+					<label for="datetahun" class="col-sm-3">Choose a Day</label>
+					<input type="date" class="col-sm-3" id="date" name="date" value="<?php echo $date;?>">
+					<div class="col-sm-2">
+						<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
+					</div>
+				</form>
 				<div class="col-md-12">
 
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -168,6 +169,7 @@
 						}
 
 					</script>
+
 					<!-- Voltage  -->
 					<div id="chart_volt" style="margin-top:30px;"></div>
 					<script>

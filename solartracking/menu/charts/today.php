@@ -1,15 +1,7 @@
-<?php
-	if(isset($_POST["week"])){
-
-	    $week = $_POST["week"];
-
-	}
-
-	?>
 <div class="col-md-12">
 	<div class="box box-default">
 		<div class="box-header with-border">
-			<h3 class="box-title">Weekly Chart</h3>
+			<h3 class="box-title">Today</h3>
 			<div class="box-tools pull-right">
 				<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
@@ -19,15 +11,7 @@
 		<div class="box-body">
 			<div class="row">
 				<div class="col-md-12">
-					<div class="row">
-						<form action="index.php?page=weekly" method="POST">
-							<label for="week" class="col-sm-3">Choose a Week</label>
-							<input type="week" class="col-sm-3" id="week" name="week" value="<?php echo $week;?>">
-							<div class="col-sm-2">
-								<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
-							</div>
-						</form>
-					</div>
+
 					<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 					<!-- Temperature -->
 					<div id="chart_div" style="margin-top:30px;" width="100%"></div>
@@ -170,6 +154,7 @@
 						}
 
 					</script>
+
 					<!-- Voltage  -->
 					<div id="chart_volt" style="margin-top:30px;"></div>
 					<script>
