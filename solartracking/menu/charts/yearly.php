@@ -1,7 +1,6 @@
 <?php
-	if(isset($_POST["tahun"])){
-
-	    $tahun = $_POST["tahun"];
+	if(isset($_POST["year"])){
+	    $year = $_POST["year"];
 
 	}
 
@@ -20,9 +19,9 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="row">
-						<form action="index.php?page=weekly" method="POST">
-							<label for="tahun" class="col-sm-3">Choose a Year</label>
-							<input type="date" class="col-sm-3" id="tahun" name="tahun" value="<?php echo $tahun;?>">
+						<form action="index.php?page=yearly" method="POST">
+							<label for="year" class="col-sm-3">Choose a Year</label>
+							<input type="year" class="col-sm-3" id="year" name="year" value="<?php echo $year;?>">
 							<div class="col-sm-2">
 								<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
 							</div>

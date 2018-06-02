@@ -10,7 +10,6 @@
 	          case 'monthly': include'menu/charts/monthly.php'; break;
 	          case 'yearly': include'menu/charts/yearly.php'; break;
 	          case 'dashboard': include'menu/button/dashboard.php'; break;
-            case 'tables': include'menu/tables/table.php'; break;
 
 
           // default: include'404.php'; break;
