@@ -1,15 +1,16 @@
-<div class="col-md-9">
+<div class="container">
   <div class="nav-tabs-custom">
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#activity" data-toggle="tab">Temperature</a></li>
-      <li><a href="#timeline" data-toggle="tab">Voltage</a></li>
-      <li><a href="#settings" data-toggle="tab">Ampere</a></li>
+      <li><a href="#temperature" data-toggle="tab">Temperature</a></li>
+      <li><a href="#voltage" data-toggle="tab">Voltage</a></li>
+      <li><a href="#ampere" data-toggle="tab">Ampere</a></li>
     </ul>
     <div class="tab-content">
 
       <!-- Temperature Chart -->
-      <div class="active tab-pane"> <a href="chart_div">
-        <div id="chart_div" style="margin-top:30px;" width="100%"></div>
+      <div class="tab-pane" id="temperature">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="chart_div" style="width:100%;"></div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -74,7 +75,8 @@
 
       <!-- Voltage Chart -->
       <div class="tab-pane" id="voltage">
-        <div id="chart_volt" style="margin-top:30px;"></div>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="chart_volt" style="margin-top:30px width:1056;"></div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -139,7 +141,8 @@
 
       <!-- Ampere Charts -->
       <div class="tab-pane" id="ampere">
-        <div id="chart_ampere" style="margin-top:30px;"></div>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <div id="chart_ampere"></div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -204,29 +207,12 @@
           }
         </script>
       </div>
-      <!-- /.tab-pane -->
 
-      <div class="tab-pane" id="watt">
-        <!-- content 3-->
-      </div>
-      <!-- /.tab-pane -->
     </div>
     <!-- /.tab-content -->
   </div>
   <!-- /.nav-tabs-custom -->
 </div>
 <!-- /.col -->
-<div class="col-md-3">
-  <div class="box box-default">
-    <div class="box-header with-border">
-      <h3 class="box-title">Alert</h3>
-      <div class="box-tools pull-right">
-        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-remove"></i></button>
-      </div>
-    </div>
-  </div>
-
   <!-- /.row -->
-
   <!-- Notifications -->

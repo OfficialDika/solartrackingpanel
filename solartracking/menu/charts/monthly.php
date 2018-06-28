@@ -1,7 +1,7 @@
 <?php
 	if(isset($_POST["bulan"])){
 	    $bulan = $_POST["bulan"];
-
+			// echo $bulan;
 	}
 
 	?>
@@ -55,27 +55,22 @@
 							}else if ($tgl==1) {
 
 							// $query = "SELECT * FROM `mobile` WHERE DATE(`timestamp`) = CURDATE()";
-							$query = "SELECT * FROM `mobile` WHERE DATE(timestamp) = CURDATE()";
+							$query = "SELECT * FROM `average` WHERE date like '$bulan%'";
 							}
 							$result = mysqli_query($con, $query)or die("Error: ".mysqli_error($con));
 							$no=0;
 							while($row_tarik = mysqli_fetch_array($result)){
 							    $no++;
 							    $id = $row_tarik['id'];
-							    $suhu = $row_tarik['suhu'];
-							    $timestamp  = $row_tarik['timestamp'];
+							    $suhu = $row_tarik['avg_temp'];
+							    $timestamp  = $row_tarik['date'];
 							      $timestamp1 = explode(" ",$timestamp);
 							      $date = $timestamp1[0];
 							      $date1 = explode("-",$date);
 							      $year = $date1[0];
 							      $month = $date1[1]-1;
 							      $day = $date1[2];
-							      $time = $timestamp1[1];
-							      $time1 = explode(":",$time);
-							      $hour = $time1[0]+7;
-							      $minute = $time1[1];
-							      $second = $time1[2];
-							      echo "[new Date( ".$year.", ".$month.", ".$day.", ".$hour.", ".$minute."), ".$suhu."],";
+							      echo "[new Date( ".$year.", ".$month.", ".$day."), ".$suhu."],";
 							}
 							?>
 						]);
