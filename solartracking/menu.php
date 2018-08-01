@@ -32,10 +32,26 @@
           <li class="<?php if ($active == 'daily'){echo 'active';}?>"><a href="index.php?page=daily"><i class="fa fa-circle-o"></i> Daily</a></li>
           <li class="<?php if ($active == 'weekly'){echo 'active';}?>"><a href="index.php?page=weekly"><i class="fa fa-circle-o"></i> Weekly</a></li>
 					<li class="<?php if ($active == 'monthly'){echo 'active';}?>"><a href="index.php?page=monthly"><i class="fa fa-circle-o"></i> Monthly</a></li>
-					<li class="<?php if ($active == 'yearly'){echo 'active';}?>"><a href="index.php?page=yearly"><i class="fa fa-circle-o"></i> Yearly</a></li>
+					<!-- <li class="<?php if ($active == 'yearly'){echo 'active';}?>"><a href="index.php?page=yearly"><i class="fa fa-circle-o"></i> Yearly</a></li> -->
 				</ul>
             </li>
 			<!-- <li class="treeview menu-open"> -->
+
+      <li class="treeview <?php if ($active == 'daily_comparison' || $active == 'monthly_comparison'){echo "active";}?>">
+              <a href="#">
+        <i class="fa fa-pie-chart"></i>
+            <span>Comparison</span>
+            <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+          <li class="<?php if ($active == 'daily_comparison'){echo 'active';}?>"><a href="index.php?page=daily_comparison"><i class="fa fa-circle-o"></i> Daily Comparison</a></li>
+          <li class="<?php if ($active == 'monthly_comparison'){echo 'active';}?>"><a href="index.php?page=monthly_comparison"><i class="fa fa-circle-o"></i> Monthly Comparison</a></li>
+          <!-- <li class="<?php if ($active == 'yearly'){echo 'active';}?>"><a href="index.php?page=yearly"><i class="fa fa-circle-o"></i> Yearly</a></li>-->
+        </ul>
+            </li>
+
 
 			<li><a href="logout.php"><i class="glyphicon glyphicon-log-out"></i> <span>Logout</span></a></li>
           </ul>

@@ -5,12 +5,12 @@
       <li><a href="#voltage" data-toggle="tab">Voltage</a></li>
       <li><a href="#ampere" data-toggle="tab">Ampere</a></li>
     </ul>
-    <div class="tab-content">
+    <div class="tab-content" style="width:100%">
 
       <!-- Temperature Chart -->
-      <div class="tab-pane" id="temperature">
+      <div class="tab-pane" id="temperature" style="width:100%">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <div id="chart_div" style="width:100%;"></div>
+        <div id="chart_div" style="width:100%"> </div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -65,7 +65,9 @@
           title: 'Temperature (Celcius)'
           },
           colors: ['#3b8cbb'],
-          backgroundColor: '#f1f8e9'
+          backgroundColor: '#f1f8e9',
+          'width' : 1100,
+          'height' :300
           };
           var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
           chart.draw(data, options);
@@ -74,9 +76,9 @@
       </div>
 
       <!-- Voltage Chart -->
-      <div class="tab-pane" id="voltage">
+      <div class="tab-pane" id="voltage" style="width:100%">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <div id="chart_volt" style="margin-top:30px width:1056;"></div>
+        <div id="chart_volt" style="width:100%"> </div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -131,7 +133,9 @@
           title: 'Voltage (Volt)'
           },
           colors: ['#ffc600'],
-          backgroundColor: '#f1f8e9'
+          backgroundColor: '#f1f8e9',
+          'width' : 1100,
+          'height' :300
           };
           var chart = new google.visualization.LineChart(document.getElementById('chart_volt'));
           chart.draw(data, options);
@@ -140,9 +144,9 @@
       </div>
 
       <!-- Ampere Charts -->
-      <div class="tab-pane" id="ampere">
+      <div class="tab-pane" id="ampere" style="width:100%">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-        <div id="chart_ampere"></div>
+        <div id="chart_ampere" style="width:100%"> </div>
         <script>
           google.charts.load('current', {packages: ['corechart', 'line']});
           google.charts.setOnLoadCallback(drawBackgroundColor);
@@ -199,7 +203,9 @@
           title: 'Current (Ampere)'
           },
           colors: ['#ff2534'],
-          backgroundColor: '#f1f8e9'
+          backgroundColor: '#f1f8e9',
+          'width' : 1100,
+          'height' :300
           };
 
           var chart = new google.visualization.LineChart(document.getElementById('chart_ampere'));
