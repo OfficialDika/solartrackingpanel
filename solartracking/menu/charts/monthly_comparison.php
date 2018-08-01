@@ -84,7 +84,7 @@ while($row_tarik1 = mysqli_fetch_array($result1)){
                              role: "annotation" },
                            2]);
           var options = {
-            title: "Daily Comparison Energy in WattHour",
+            title: "Monthly Comparison Energy in WattHour",
             width: 1000,
             height: 400,
             bar: {groupWidth: "95%"},
