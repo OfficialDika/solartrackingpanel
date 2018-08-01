@@ -16,8 +16,6 @@
 include '../db_connect.php';
 $query = "SELECT avg(volt), avg(ampere), avg(suhu), DATE(timestamp) FROM mobile WHERE timestamp LIKE '".$bulan."-%'";
 $query1 = "SELECT avg(volt), avg(ampere), avg(suhu), DATE(timestamp) FROM mobile WHERE timestamp LIKE '".$bulan1."-%'";
-// $query = "SELECT * FROM `average` WHERE date like '".$bulan."%'";
-// $query = "SELECT * FROM `average` WHERE date like '".$bulan1."%'";
 $result = mysqli_query($con, $query)or die("Error: ".mysqli_error($con));
 $no=0;
 while($row_tarik = mysqli_fetch_array($result)){
@@ -72,9 +70,9 @@ while($row_tarik1 = mysqli_fetch_array($result1)){
         google.charts.setOnLoadCallback(drawChart);
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
-            ["Element", "Density", { role: "style" } ],
+            ["Month", "Average WattHour", { role: "style" } ],
             ["<?php echo $bulan;?>", <?php echo $watt;?>, "blue"],
-            ["<?php echo $bulan1;?>", <?php echo $watt1;?>, "blue"],
+            ["<?php echo $bulan1;?>", <?php echo $watt1;?>, "orange"],
           ]);
           var view = new google.visualization.DataView(data);
           view.setColumns([0, 1,

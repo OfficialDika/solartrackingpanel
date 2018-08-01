@@ -52,22 +52,21 @@ while($row_tarik1 = mysqli_fetch_array($result1)){
       <form action="index.php?page=daily_comparison" method="POST">
       <label for="datetime" class="col-sm-2">Choose a Date</label>
       <input type="date" class="col-sm-2" id="date" name="date" value="<?php echo $date;?>">
-
 			<label for="datetime" class="col-sm-2">Choose a Second Date</label>
 			<input type="date" class="col-sm-2" id="date1" name="date1" value="<?php echo $date1;?>">
 			<div class="col-sm-2">
 				<button type="submit" class="btn btn-primary" style="padding-top:0px; padding-bottom:0">Sort</button>
 			</div>
 			</form>
-			<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-  <script type="text/javascript">
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  	<script type="text/javascript">
     google.charts.load("current", {packages:['corechart']});
     google.charts.setOnLoadCallback(drawChart);
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
-        ["Element", "Density", { role: "style" } ],
+        ["Date", "Average WattHour", { role: "style" } ],
         ["<?php echo $date;?>", <?php echo $watt;?>, "blue"],
-        ["<?php echo $date1;?>", <?php echo $watt1;?>, "blue"],
+        ["<?php echo $date1;?>", <?php echo $watt1;?>, "orange"],
       ]);
 
       var view = new google.visualization.DataView(data);
